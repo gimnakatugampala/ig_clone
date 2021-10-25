@@ -1,11 +1,17 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { StyleSheet, Text, TouchableOpacity, View ,Image } from 'react-native'
 
+import FormikPostUploader from './FormikPostUploader'
+
+
 export default function AddNewPost() {
+
     return (
       <View style={styles.container}>
           <Header />
           {/* Post Form */}
+          <FormikPostUploader />
+          
       </View>
     )
 }
