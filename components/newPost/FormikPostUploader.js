@@ -3,7 +3,7 @@ import { StyleSheet, Text, View ,TextInput,Image, Button } from 'react-native'
 import * as Yup from 'yup'
 import { Formik } from 'formik'
 import { Divider } from 'react-native-elements'
-
+import validUrl from 'valid-url'
 
 const PLACEHOLDER_IMG = 'https://thumbs.dreamstime.com/b/no-thumbnail-image-placeholder-forums-blogs-websites-148010362.jpg'
 
@@ -12,21 +12,24 @@ const uploadPostSchema = Yup.object().shape({
     caption:Yup.string().max(2200,'Caption has reached the character limit')
 })
 
-export default function FormikPostUploader() {
+export default function FormikPostUploader({navigation}) {
 
     const [thumbnailURL, setthumbnailURL] = useState(PLACEHOLDER_IMG)
 
     return (
         <Formik
             initialValues={{caption:'',imageURL:''}}
-            onSubmit={(values) => console.log(values)}
+            onSubmit={(values) =>{
+                 console.log(values)
+                 navigation.goBack()
+                }}
             validationSchema={uploadPostSchema}
             validateOnMount={true}
         >
             {({handleBlur,handleChange,handleSubmit,values,errors,isValid}) => 
                <>
                 <View style={{margin:20,justifyContent:'space-between',flexDirection:'row'}}>
-                    <Image source={{uri:thumbnailURL ? thumbnailURL : PLACEHOLDER_IMG}} style={{width:100,height:100}} />
+                    <Image source={{uri:validUrl.isUri(thumbnailURL) ? thumbnailURL : PLACEHOLDER_IMG}} style={{width:100,height:100}} />
                 
                 <View style={{flex:1,marginLeft:12}}>
                 <TextInput

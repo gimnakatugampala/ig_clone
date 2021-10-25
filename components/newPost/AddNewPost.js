@@ -10,7 +10,7 @@ export default function AddNewPost({navigation}) {
       <View style={styles.container}>
           <Header navigation={navigation} />
           {/* Post Form */}
-          <FormikPostUploader />
+          <FormikPostUploader navigation={navigation} />
           
       </View>
     )
