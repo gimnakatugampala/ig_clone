@@ -7,10 +7,10 @@ import BottomTabs, { bottomTabIcons } from '../components/Home/BottomTabs'
 import { POSTS } from '../data/posts'
 
 
-export default function HomeScreen() {
+export default function HomeScreen({navigation}) {
     return (
         <SafeAreaView style={styles.container}>
-            <Header />
+            <Header navigation={navigation} />
             <Stories />
 
             <ScrollView>

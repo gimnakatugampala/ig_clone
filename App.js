@@ -4,10 +4,14 @@ import { StyleSheet, Text, View } from 'react-native';
 import HomeScreen from './screens/HomeScreen';
 
 import AddNewPostScreen from './screens/AddNewPostScreen';
+import Navigation from './screens/Navigation';
+
+
+
 
 export default function App() {
   return (
-    <AddNewPostScreen />
+    <Navigation />
   )
 }
 
